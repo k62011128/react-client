@@ -9,7 +9,6 @@ import React, {
 import {
     BrowserRouter,
     Route,
-    Link,
     Switch
 } from 'react-router-dom'
 import Login from './pages/login/login'
