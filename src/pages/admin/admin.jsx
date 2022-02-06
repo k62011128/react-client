@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import memoryUtils from "../../utils/memoryUtils";
-import { Redirect,Route } from "react-router-dom";
-import { Layout, Switch } from 'antd';
+import { Redirect,Route,Switch } from "react-router-dom";
+import { Layout } from 'antd';
 import LeftNav from '../../components/left-nav/index'
 import Header from '../../components/header/index'
 import Home from '../home/home'
@@ -23,12 +23,12 @@ export default class Admin extends Component {
             <Layout style={{ height: '100%' }}>
                 <Sider>
                     <LeftNav>
-
+  
                     </LeftNav>
                 </Sider>
                 <Layout>
                     <Header></Header>
-                    <Content style={{backgroundColor:'#fff'}}>
+                    <Content style={{margin:20,backgroundColor:'#fff'}}>
                         <Switch>
                             <Route path='/home' component={Home}/>
                             <Route path='/category' component={Category}/>

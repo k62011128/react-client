@@ -22,7 +22,7 @@ export default class Login extends Component {
                 message.success("登陆成功!")
                 memoryUtils.user = response.data
                 storageUtils.saveUser(memoryUtils.user)
-                this.props.history.push("/admin")
+                this.props.history.push("/")
             }
             else {
                 message.error("登陆失败!")
