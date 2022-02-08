@@ -16,8 +16,8 @@ export const reqWeather=()=>{
         jsonp(url,{},(err,data)=>{
             if(!err&&data.status==='1')
             {
-                const {weather}=data.lives[0]
-                resolve({weather});
+                const {city,weather}=data.lives[0]
+                resolve({city,weather});
             }
             else{
                 message.error('获取天气数据失败')

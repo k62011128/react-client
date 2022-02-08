@@ -13,18 +13,22 @@ User.find({
     }).then(result => {
         data = result[0]
         console.log(data)
-
+    
     })
     .catch(err => {
         console.log(err)
     })
 
 app.post('/login', (req, res, next) => {
-    // console.log(req.body)
-    res.send({
-        data,
-        status: 1
-    });
+    console.log(req.body)
+    const {username,password}=req.body
+    if(username===data.userName&&password===data.userPassword)
+    {
+        res.send({
+            data,
+            status: 1
+        });
+    }
     next();
 })
 
