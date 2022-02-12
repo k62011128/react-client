@@ -1,11 +1,7 @@
 import React, {
     Component
 } from 'react'
-// import {
-//     message, Button
-// } from 'antd';
-// import './app.less'
-// import 'antd/dist/antd.css'
+import 'antd/dist/antd.less'
 import {
     BrowserRouter,
     Route,
@@ -13,7 +9,7 @@ import {
 } from 'react-router-dom'
 import Login from './pages/login/login'
 import Admin from './pages/admin/admin'
-
+import './App.less'
 export default class App extends Component {
 
     render() {

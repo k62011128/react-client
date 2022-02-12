@@ -1,7 +1,7 @@
 // 导入 mongoose 模块
 const mongoose = require('mongoose');
 // 设置默认 mongoose 连接,如果没有对应名字的数据库会自动创建
-const url = 'mongodb://127.0.0.1:27017/people';
+const url = 'mongodb://localhost:27017/User';
 mongoose.connect(url);
 //检查是否连接成功
 var db = mongoose.connection;
@@ -22,4 +22,4 @@ var userSchema = new mongoose.Schema(
     }
 );
 //第一个参数是模型名称，貌似没用，第二个参数是自定义的结构，第三个参数是连接的数据库中的集合,没有会自动创建
-module.exports=mongoose.model('User',userSchema,'users');
+module.exports=mongoose.model('user',userSchema,'users');
