@@ -8,7 +8,7 @@ export function reqLogin(username, password) {
     }, 'POST');
 }
 
-export const reqAddUser=(user)=>ajax('/manager/user/add',user,'POST')
+export const reqAddUser=(user)=>ajax('/manage/user/add',user,'POST')
 
 export const reqWeather=()=>{
     return new Promise((resolve,reject)=>{
@@ -26,3 +26,10 @@ export const reqWeather=()=>{
     })
 
 }
+
+export const reqCategorys=(parentId)=>ajax('/manage/category/list',{parentId})
+
+export const reqAddCategory=(categoryName,parentId)=>ajax('/manage/category/add',{categoryName,parentId},'post')
+
+export const reqUpdateCategory=({categoryName, categoryId})=>ajax('/manage/category/update',{categoryName,categoryId},'post')
+

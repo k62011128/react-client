@@ -18,9 +18,9 @@ export default class Login extends Component {
         const onFinish = async (values) => {
             const { username, password } = values
             const response = await reqLogin(username, password)
-            if (response.status === 1) {
+            if (response.priority > 0) {
                 message.success("登陆成功!")
-                memoryUtils.user = response.data
+                memoryUtils.user = response
                 storageUtils.saveUser(memoryUtils.user)
                 this.props.history.push("/")
             }
