@@ -15,8 +15,12 @@ export default class UpdateForm extends Component {
         const { categoryName}=this.props
         return (
             <div>
-                <Form>
-                    <Item>
+                <Form autoComplete="off">
+                    <Item name='category2'
+                          rules={[{
+                              required:true,
+                              message:'必须输入名称!'
+                          }]}>
                         <Input ref={this.props.inputRef} defaultValue={categoryName} placeholder='请输入分类名称'/>
                     </Item>
                 </Form>

@@ -7,6 +7,7 @@ app.use(express.urlencoded({
 const handleUserData=require('./api/handleUserData')
 const handleCategoryData=require('./api/handleCategoryData')
 const handleUpdateCategoryData=require('./api/handleUpdateCategoryData')
+const handleAddCategoryData=require('./api/handleAddCategoryData')
 app.get('/manage/category/list',async (req,res,next)=>{
     const {parentId}=req.body
     let data=await handleCategoryData(req.body)
@@ -30,6 +31,12 @@ app.post('/login', async (req, res, next) => {
 })
 app.post('/manage/category/update', async (req, res, next) => {
     let data=await handleUpdateCategoryData(req.body)
+    let status=1
+    res.send({data,status})
+    next();
+})
+app.post('/manage/category/add', async (req, res, next) => {
+    let data=await handleAddCategoryData(req.body)
     let status=1
     res.send({data,status})
     next();

@@ -33,3 +33,6 @@ export const reqAddCategory=(categoryName,parentId)=>ajax('/manage/category/add'
 
 export const reqUpdateCategory=({categoryName, categoryId})=>ajax('/manage/category/update',{categoryName,categoryId},'post')
 
+export const reqProducts=(pageNumber,pageSize)=>ajax('/manage/product/list',{pageNumber,pageSize})
+
+export const reqSearchProducts=({pageNumber,pageSize,searchName,searchType})=>ajax('/manage/product/search',{pageNumber,pageSize,[searchType]:searchName})

@@ -16,6 +16,7 @@ export default class Category extends Component {
             categorys: [],
             showStatus: 0,
         }
+        this.addRef=React.createRef()
         this.inputRef=React.createRef()
         this.title = '一级分类列表'
         this.columns = [
@@ -62,16 +63,34 @@ export default class Category extends Component {
     showAddCategoryModal = () => {
         this.setState({showStatus: 1})
     }
-    addCategory = () => {
+    addCategory = async () => {
         this.setState({showStatus: 0})
+        const categoryName=this.addRef.current.state.value
+        if(categoryName!='')
+        {
+            const parentId=0
+            const result=await reqAddCategory(categoryName,parentId)
+            if(result.status===1){
+                this.getCategory()
+            }
+        }
+        else {
+            console.log('提交失败了!')
+        }
     }
     updateCategory = async () => {
         this.setState({showStatus: 0})
         const categoryId=this.category._id
         const categoryName=this.inputRef.current.state.value
-        const result=await reqUpdateCategory({categoryName, categoryId})
-        if(result.status===1){
-            this.getCategory()
+        if(categoryName!='')
+        {
+            const result=await reqUpdateCategory({categoryName, categoryId})
+            if(result.status===1){
+                this.getCategory()
+            }
+        }
+        else {
+            console.log('修改失败了!')
         }
     }
     handleCancel = () => {
@@ -93,7 +112,7 @@ export default class Category extends Component {
                     dataSource={categorys} columns={this.columns}
                     pagination={{defaultPageSize: 4, showQuickJumper: true}}/>
                 <Modal title="添加分类" visible={showStatus === 1} onOk={this.addCategory} onCancel={this.handleCancel}>
-                    <AddForm/>
+                    <AddForm addRdf={this.addRef}/>
                 </Modal>
                 <Modal title="修改分类" visible={showStatus === 2} onOk={this.updateCategory} onCancel={this.handleCancel}>
                     <UpdateForm categoryName={category.name} inputRef={this.inputRef}/>
